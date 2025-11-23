@@ -11,32 +11,38 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  late File _image;
+  XFile? _imageFile;
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _getImage() async {
+    final pickedImage = await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage == null) return;
+
+    setState(() {
+      _imageFile = pickedImage;
+    });
+  }
+
+  Future<void> _uploadPic(BuildContext context) async {
+    if (_imageFile == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please select an image first')),
+      );
+      return;
+    }
+
+    final fileName = basename(_imageFile!.path);
+    final storageRef = FirebaseStorage.instance.ref().child(fileName);
+    final uploadTask = storageRef.putFile(File(_imageFile!.path));
+    await uploadTask.whenComplete(() {});
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Profile Picture Uploaded')),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    Future getImage() async {
-      var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-
-      setState(() {
-        _image = image as File;
-        print('Image Path $_image');
-      });
-    }
-
-    Future uploadPic(BuildContext context) async {
-      String fileName = basename(_image.path);
-      StorageReference firebaseStorageRef =
-          FirebaseStorage.instance.ref().child(fileName);
-      StorageUploadTask uploadTask = firebaseStorageRef.putFile(_image);
-      StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
-      setState(() {
-        print("Profile Picture uploaded");
-        Scaffold.of(context)
-            .showSnackBar(SnackBar(content: Text('Profile Picture Uploaded')));
-      });
-    }
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -66,9 +72,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: new SizedBox(
                           width: 180.0,
                           height: 180.0,
-                          child: (_image != null)
+                          child: (_imageFile != null)
                               ? Image.file(
-                                  _image,
+                                  File(_imageFile!.path),
                                   fit: BoxFit.fill,
                                 )
                               : Image.network(
@@ -87,7 +93,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         size: 30.0,
                       ),
                       onPressed: () {
-                        getImage();
+                        _getImage();
                       },
                     ),
                   ),
@@ -237,24 +243,30 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   ElevatedButton(
-                    color: Color(0xff476cfb),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff476cfb),
+                      foregroundColor: Colors.white,
+                      elevation: 4.0,
+                      overlayColor: Colors.blueGrey.withOpacity(0.2),
+                    ),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    elevation: 4.0,
-                    splashColor: Colors.blueGrey,
                     child: Text(
                       'Cancel',
                       style: TextStyle(color: Colors.white, fontSize: 16.0),
                     ),
                   ),
                   ElevatedButton(
-                    color: Color(0xff476cfb),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff476cfb),
+                      foregroundColor: Colors.white,
+                      elevation: 4.0,
+                      overlayColor: Colors.blueGrey.withOpacity(0.2),
+                    ),
                     onPressed: () {
-                      uploadPic(context);
+                      _uploadPic(context);
                     },
-                    elevation: 4.0,
-                    splashColor: Colors.blueGrey,
                     child: Text(
                       'Submit',
                       style: TextStyle(color: Colors.white, fontSize: 16.0),

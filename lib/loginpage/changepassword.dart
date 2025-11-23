@@ -144,7 +144,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         MaterialPageRoute(builder: (context) => buttons()),
                       );
                     },
-                    style: ElevatedButton.styleFrom(primary: Colors.blue),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                     //padding: EdgeInsets.symmetric(horizontal: 50),
                     //elevation: 2,
                     //shape: RoundedRectangleBorder(

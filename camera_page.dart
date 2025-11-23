@@ -105,8 +105,8 @@ class _CameraPageState extends State<CameraPage> {
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Color.fromRGBO(155, 163, 235, 1), // background
-              onPrimary: Colors.black, // foreground
+              backgroundColor: Color.fromRGBO(155, 163, 235, 1), // background
+              foregroundColor: Colors.black, // foreground
             ),
             onPressed: () async {
               pictureFile = await controller.takePicture();

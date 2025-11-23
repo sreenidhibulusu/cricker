@@ -1,4 +1,4 @@
-import 'package:cricker/login.dart';
+import 'login.dart';
 import 'package:flutter/material.dart';
 import 'SecondScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -31,8 +31,8 @@ class buttons extends StatelessWidget {
             height: 50,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Color.fromRGBO(155, 163, 235, 1), // background
-                onPrimary: Colors.black, // foreground
+                backgroundColor: Color.fromRGBO(155, 163, 235, 1), // background
+                foregroundColor: Colors.black, // foreground
               ),
               child: Text(
                 'KD Sheets',
@@ -56,8 +56,8 @@ class buttons extends StatelessWidget {
             height: 50,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Color.fromRGBO(155, 163, 235, 1), // background
-                onPrimary: Colors.black, // foreground
+                backgroundColor: Color.fromRGBO(155, 163, 235, 1), // background
+                foregroundColor: Colors.black, // foreground
               ),
               child: Text(
                 'DC Sheets',
@@ -81,8 +81,8 @@ class buttons extends StatelessWidget {
             height: 50,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Color.fromRGBO(155, 163, 235, 1), // background
-                onPrimary: Colors.black, // foreground
+                backgroundColor: Color.fromRGBO(155, 163, 235, 1), // background
+                foregroundColor: Colors.black, // foreground
               ),
               child: Text(
                 'Suspect Sheets',
@@ -106,8 +106,8 @@ class buttons extends StatelessWidget {
             height: 50,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Color.fromRGBO(155, 163, 235, 1), // background
-                onPrimary: Colors.black, // foreground
+                backgroundColor: Color.fromRGBO(155, 163, 235, 1), // background
+                foregroundColor: Colors.black, // foreground
               ),
               child: Text(
                 'Rowdy Sheets',

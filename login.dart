@@ -1,6 +1,6 @@
-import 'package:cricker/buttons.dart';
-import 'package:cricker/register.dart';
-import 'package:cricker/resetpassword.dart';
+import 'buttons.dart';
+import 'register.dart';
+import 'resetpassword.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';

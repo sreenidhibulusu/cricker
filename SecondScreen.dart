@@ -1,5 +1,5 @@
-import 'package:cricker/details.dart';
-import 'package:cricker/verification.dart';
+import 'details.dart';
+import 'verification.dart';
 import 'package:flutter/material.dart';
 import 'login.dart';
 import 'buttons.dart';
@@ -125,8 +125,8 @@ class _SecondScreenState extends State<SecondScreen> {
               height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Color.fromRGBO(155, 163, 235, 1), // background
-                  onPrimary: Colors.black, // foreground
+                  backgroundColor: Color.fromRGBO(155, 163, 235, 1), // background
+                  foregroundColor: Colors.black, // foreground
                 ),
                 child: Text(
                   'Attendance',
@@ -150,8 +150,8 @@ class _SecondScreenState extends State<SecondScreen> {
               height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Color.fromRGBO(155, 163, 235, 1), // background
-                  onPrimary: Colors.black, // foreground
+                  backgroundColor: Color.fromRGBO(155, 163, 235, 1), // background
+                  foregroundColor: Colors.black, // foreground
                 ),
                 child: Text(
                   'Checking',
@@ -175,8 +175,8 @@ class _SecondScreenState extends State<SecondScreen> {
               height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Color.fromRGBO(155, 163, 235, 1), // background
-                  onPrimary: Colors.black, // foreground
+                  backgroundColor: Color.fromRGBO(155, 163, 235, 1), // background
+                  foregroundColor: Colors.black, // foreground
                 ),
                 child: Text(
                   'Daily Target',
