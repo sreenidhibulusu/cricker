@@ -47,7 +47,10 @@ class _HomePageState extends State<HomePage> {
     } else {
       print('i am there');
       Position currentLoc = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.best);
+        locationSettings: const LocationSettings(
+          accuracy: LocationAccuracy.best,
+        ),
+      );
       setState(() {
         long = currentLoc.longitude;
         lat = currentLoc.latitude;

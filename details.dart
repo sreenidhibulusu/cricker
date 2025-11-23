@@ -9,8 +9,6 @@ import 'verification.dart';
 import 'camera_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 
 class details extends StatefulWidget {
   details({Key? key}) : super(key: key);

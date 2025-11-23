@@ -28,7 +28,10 @@ class _CameraPageState extends State<CameraPage> {
       LocationPermission per1 = await Geolocator.requestPermission();
     } else {
       Position currentLoc = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.best);
+        locationSettings: const LocationSettings(
+          accuracy: LocationAccuracy.best,
+        ),
+      );
       setState(() {
         long = currentLoc.longitude.toString();
         lat = currentLoc.latitude.toString();
